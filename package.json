@@ -1,0 +1,19 @@
+{
+  "name": "interview",
+  "version": "0.0.0",
+  "main": "1_reverse_test.js",
+  "scripts": {
+    "test": "mocha tests",
+    "part2": "mocha tests/2_reverse_test.js",
+    "part3": "mocha tests/3_sorter_test.js",
+    "part4": "mocha tests/4_array_contains.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "lodash": "^4.17.4",
+    "mocha": "^4.0.1",
+    "sinon": "^4.1.3"
+  }
+}
