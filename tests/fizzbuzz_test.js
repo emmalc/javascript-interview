@@ -19,7 +19,7 @@ describe('fizzbuzz', function() {
   });
 
   it('Your function should accept 1 argument - the `print` function. @fizzbuzz', function() {
-    assert.equal(fizzbuzz.length, 1, 'Your function should accept 1 argument.');
+    assert.equal(fizzbuzz.length, 1, 'Your function should accept 1 argument - the `print` function.');
   });
 
   describe('execution', function() {
@@ -52,21 +52,25 @@ describe('fizzbuzz', function() {
     describe('first 5', function() {
       it("starts off right @fizzbuzz", function() {
         var first = spy.firstCall.args[0],
-            second = spy.secondCall.args[0];
+            second = spy.secondCall;
         assert.equal(+first, 1, "Make sure the 1st call to `console.log` is `1`. The 1st call from your `fizzBuzz` function was with the argument: `"+first+"`.");
-        assert.equal(+second, 2, "Make sure the 2nd call to `console.log` is `2`. The 2nd call from your `fizzBuzz` function was with the argument: `"+second+"`.");
+        assert(second, "We couldn't find a second call to the print function.");
+        assert.equal(+second.args[0], 2, "Make sure the 2nd call to `console.log` is `2`. The 2nd call from your `fizzBuzz` function was with the argument: `"+second.args[0]+"`.");
       });
       it("uses fizz @fizzbuzz", function() {
-        var third = spy.getCall(2).args[0];
-        assert.equal(third, "Fizz", "The 3rd call to `print` should pass in `Fizz`, but your 3rd call passed the argument: `"+third+"`.");
+        var third = spy.getCall(2)
+        assert(third, "We couldn't find a third call to the print function.");
+        assert.equal(third.args[0], "Fizz", "The 3rd call to `print` should pass in `Fizz`, but your 3rd call passed the argument: `"+third.args[0]+"`.");
       });
       it("goes back to numbers @fizzbuzz", function() {
-        var fourth = spy.getCall(3).args[0];
-        assert.equal(fourth, 4, "The 4th call to `print` should pass in `4`, but your 4th call passed the argument: `"+fourth+"`.");
+        var fourth = spy.getCall(3);
+        assert(fourth, "We couldn't find a fourth call to the print function.");
+        assert.equal(fourth.args[0], 4, "The 4th call to `print` should pass in `4`, but your 4th call passed the argument: `"+fourth.args[0]+"`.");
       });
       it("uses buzz @fizzbuzz", function() {
-        var fifth = spy.getCall(4).args[0];
-        assert.equal(fifth, "Buzz", "The 5th call to `print` should pass in `Buzz`, but your 4th call passed the argument: `"+fifth+"`.");
+        var fifth = spy.getCall(4);
+        assert(fifth, "We couldn't find a fifth call to the print function.");
+        assert.equal(fifth.args[0], "Buzz", "The 5th call to `print` should pass in `Buzz`, but your 4th call passed the argument: `"+fifth.args[0]+"`.");
       });
     });
 
